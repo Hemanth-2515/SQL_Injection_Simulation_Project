@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login Result</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <div class="login-form">
+            <h1>Login Result</h1>
+            {% if not user_valid %}
+                <p>{{ error_msg }}</p>
+            {% else %}
+                <p>User ID & password are valid.</p>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>User ID</th>
+                            <th>User Type</th>
+                            <th>Account Balance</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for user in users1_data %}
+                            <tr>
+                                <td>{{ user[0] }}</td> <!-- user_id -->
+                                <td>{{ user[2] }}</td> <!-- user_type -->
+                                <td>{{ user[3] }}</td> <!-- account_balance -->
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            {% endif %}
+        </div>
+    </div>
+</body>
+</html>
